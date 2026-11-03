@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  trade-api:
+    build:
+      context: ..
+      dockerfile: api/Dockerfile
+    container_name: trade-assessment-api
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      # Only API keys are configurable - all other settings are hardcoded for security
+      AUTHORIZED_API_KEYS: ${AUTHORIZED_API_KEYS}
+    volumes:
+      # Mount config directory (read-only)
+      - ./api:/app:ro
+      # Mount logs directory
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - trade-network
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    read_only_root_filesystem: false
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+
+networks:
+  trade-network:
+    driver: bridge

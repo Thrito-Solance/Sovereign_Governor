@@ -1,0 +1,34 @@
+Summary
+
+- The API accepts trade data (JSON) and returns a concise assessment: one of "approved", "rejected", or "flagged".
+- Access is restricted by API keys; only authorized clients can call the API.
+- The Lean 4 assessment kernel is executed by the service but its internal logic and outputs are not exposed through the API.
+
+Testing Overview (high level)
+
+- Total automated tests run or created for verification: 111
+  - Adversary-focused tests: verify fixes for known vulnerabilities
+  - Boundary tests: verify validation limits are enforced at edges
+  - Creative/adversarial scenarios: verify robustness against unusual inputs
+  - Paradox/consistency checks: verify logical consistency and idempotency
+
+- Tests are automated and designed to be repeatable prior to deployment.
+- Passing the full test suite provides reasonable assurance that the API enforces the documented constraints and does not leak kernel internals. Tests and detailed technical reports are available separately on request.
+
+Key Guarantees (what this brief certifies)
+
+- Kernel IP protection: The API does not return kernel source, internals, or execution traces.
+- Authentication: Requests require an API key; keys are cryptographically generated and must be provisioned for each authorized client.
+- Minimal surface for disclosure: Error messages and logs are intentionally generic to avoid revealing implementation details.
+- Validation: Input data is validated and constrained (lengths, numeric ranges, metadata depth) before processing.
+
+What is NOT included in this brief
+
+- Technical security reports, vulnerability write-ups, or paradox boundary analyses are intentionally excluded from this document.
+- Full technical test reports and logs are available under separate, request-only documentation intended for technical reviewers.
+
+Recommended Lawyer Actions
+
+- Accept this brief as a non-technical summary for legal review.
+- If you require more technical detail, request the specific documents you need (security assessment, paradox analysis, full test logs). I can provide those under controlled disclosure.
+- Confirm acceptable terms for sharing technical appendices with third parties (e.g., NDAs, limited access).
