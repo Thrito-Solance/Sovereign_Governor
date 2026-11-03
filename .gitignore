@@ -1,0 +1,11 @@
+# Proprietary Kernel & Binaries
+SovereignGovernor2.*
+*.bin
+create_blob.py
+
+# Internal Security Tests & Local Artifacts
+APISecurityTests/
+*.hexdump.txt
+*.summary.txt
+__pycache__/
+.env
