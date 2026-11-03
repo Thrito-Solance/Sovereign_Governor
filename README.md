@@ -1,4 +1,8 @@
-# Lean 4 Trade Assessment API
+# Sovereign_Governor
+
+Sovereign Governor is a hardened, lightweight FastAPI application wrapper designed to act as a secure public boundary for executing proprietary Lean 4 formal verification engines.
+
+## Lean 4 Trade Assessment API
 
 This package contains a production-ready REST API that wraps your assessment kernel. The API accepts JSON trade data, executes your kernel, and returns assessment results. **Kernel logic is protected and not exposed through the API.**
 
@@ -19,7 +23,7 @@ This package contains a production-ready REST API that wraps your assessment ker
 - Your compiled assessment kernel (`Lean4.exe`)
 - Secure API keys (auto-generated)
 
-✅ **What to Do:** 
+✅ **What to Do:**
 1. Copy your kernel (`Lean4.exe`) to the root directory
 2. Run `api/start.bat` (Windows) or `api/start.sh` (Linux/Mac)
 3. Generate and configure API keys
@@ -104,7 +108,7 @@ response = requests.post(
 result = response.json()
 # Response contains: trade_id, status ("approved"/"rejected"/"flagged"), timestamp, and error (if any)
 print(f"Status: {result['status']}")
-print(f"Timestamp: {result['timestamp']}")  
+print(f"Timestamp: {result['timestamp']}")
 # Kernel logic is not exposed in the response
 ```
 
